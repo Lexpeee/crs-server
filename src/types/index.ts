@@ -1,9 +1,8 @@
 export * from './logs';
 export * from './rent';
 
-export type Drivers = {
+export type Driver = {
   _id: string;
-  driverProfileId: DriverProfile['_id'];
   profile?: DriverProfile;
   licenseNumber: string;
   licenseType: string;
@@ -14,11 +13,12 @@ export type Drivers = {
   totalDistanceTravelled: number; // km
   notes: string[];
   flags: string[]; // warnings and violations.  array of IDs
-  dateRegistered: Date;
+  createdAt: Date;
 };
 
 export type DriverProfile = {
   _id: string;
+  driverId: Driver['_id'];
   name: {
     firstName: string;
     lastName: string;
@@ -27,7 +27,7 @@ export type DriverProfile = {
   };
   birthday: Date;
   gender: 'M' | 'F';
-  dateCreated: Date;
+  createdAt: Date;
   contactNumber: string;
   emailAddress: string;
 };
@@ -43,7 +43,8 @@ export type Vehicles = {
   licenseNumber: string;
   userId: string | null; // id of user. null if owned by company
   totalDistanceTravelled: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   repairLogs?: any; // TODO: replace with type id
   fuelType: string;
-  dateCreated: Date; // date registered
+  createdAt: Date; // date registered
 };
