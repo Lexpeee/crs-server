@@ -1,13 +1,11 @@
-import { DamageLog } from './logs';
+import { DamageLog } from 'src/types';
 
-export type RentLog = {
+export type Rent = {
   _id: string;
-  driverId: string;
-  vehicleId: string;
-  scheduledDate: string;
-  scheduledTime: string;
-  expectedReturnDate: string;
-  expectedReturnTime: string;
+  driver: string;
+  vehicle: string;
+  scheduledDateTime: Date;
+  expectedReturnDateTime: Date;
   hoursExceeded: number;
   daysOfRent: number;
   price: number;
@@ -17,7 +15,7 @@ export type RentLog = {
   postRentImages: string[];
   damageLogs?: DamageLog[];
   isCancelled?: boolean;
-  reasonForCancel: string[];
+  reasonsForCancel: string[];
   dateTimeCancelled: Date;
   isContractSigned: boolean;
   isComprehendContract: boolean;
