@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { DriverModule } from './modules/driver/driver.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { AppService } from './app.service';
       autoSchemaFile: true,
       sortSchema: false,
     }),
+    DriverModule,
   ],
   controllers: [AppController],
   providers: [AppService],
