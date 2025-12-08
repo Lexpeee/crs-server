@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { Driver, DriverProfile } from 'src/types';
+import { Driver, DriverProfile } from '../entities/_types';
 
 const DriverProfileSchema = new Schema<DriverProfile>({
   name: {
@@ -12,7 +12,6 @@ const DriverProfileSchema = new Schema<DriverProfile>({
   gender: String,
   contactNumber: String,
   emailAddress: String,
-  createdAt: String,
 });
 
 const DriverSchema = new Schema<Driver>(

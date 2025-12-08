@@ -2,7 +2,6 @@ import {
   Field,
   GraphQLISODateTime,
   InputType,
-  Int,
   PartialType,
 } from '@nestjs/graphql';
 import * as types from '../_types';
@@ -63,6 +62,18 @@ export class CreateDriverInput {
 
 @InputType()
 export class UpdateDriverInput extends PartialType(CreateDriverInput) {
-  @Field(() => Int)
-  id: number;
+  @Field(() => DriverProfileInput, { nullable: true })
+  profile?: types.DriverProfile;
+
+  @Field(() => String, { nullable: true })
+  licenseNumber?: string;
+
+  @Field(() => String, { nullable: true })
+  licenseType?: string;
+
+  @Field(() => String, { nullable: true })
+  licenseCode?: string;
+
+  @Field(() => [String], { nullable: true })
+  notes?: string[];
 }

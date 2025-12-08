@@ -45,9 +45,6 @@ export class Driver {
 
 @ObjectType()
 export class DriverProfile {
-  @Field(() => ID)
-  _id: string;
-
   @Field(() => DriverName, { nullable: false })
   name: types.DriverProfile['name'];
 
@@ -56,9 +53,6 @@ export class DriverProfile {
 
   @Field(() => String, { nullable: false })
   gender: types.DriverProfile['gender'];
-
-  @Field(() => GraphQLISODateTime)
-  createdAt: Date;
 
   @Field(() => String)
   contactNumber: string;

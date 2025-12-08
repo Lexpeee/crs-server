@@ -1,26 +1,32 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDriverInput, UpdateDriverInput } from './entities/mutation';
 import { MDriver } from './db/MDriver';
+import { Driver } from './entities/_types';
 
 @Injectable()
 export class DriverService {
   async create(data: CreateDriverInput) {
-    return await new MDriver(data).save();
+    const newDriver: Partial<Driver> = {
+      ...data,
+      numberOfVehiclesUsed: 0,
+      isInHouseDriver: false,
+      totalDriveCount: 0,
+      totalDistanceTravelled: 0,
+      flags: [],
+      notes: [],
+    };
+    return await new MDriver(newDriver).save();
   }
 
-  findAll() {
-    return `This action returns all driver`;
+  async findAll(filters = {}) {
+    return await MDriver.find(filters);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} driver`;
+  async findOne(driverId: string) {
+    return await MDriver.findOne({ _id: driverId }).lean();
   }
 
-  update(id: number, updateDriverInput: UpdateDriverInput) {
-    return `This action updates a #${id} driver`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} driver`;
+  async update(_id: string, data: UpdateDriverInput) {
+    return await MDriver.findOneAndUpdate({ _id }, { ...data }, { new: true });
   }
 }

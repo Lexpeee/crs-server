@@ -11,6 +11,7 @@ export type Driver = {
   notes: string[];
   flags: string[]; // warnings and violations.  array of IDs
   createdAt: Date;
+  updatedAt?: Date;
 };
 
 export type DriverProfile = {

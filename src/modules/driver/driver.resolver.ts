@@ -1,38 +1,32 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { DriverService } from './driver.service';
-import { Driver } from './entities/query/driver.entity';
-import { CreateDriverInput } from './entities/mutation';
-import { UpdateDriverInput } from './entities/mutation';
+import { CreateDriverInput, UpdateDriverInput } from './entities/mutation';
+import { Driver } from './entities/query';
 
 @Resolver(() => Driver)
 export class DriverResolver {
   constructor(private readonly driverService: DriverService) {}
 
-  // TODO: check here
-  @Mutation(() => Driver, { name: 'createDriver' })
+  @Mutation(() => Driver)
   createDriver(@Args('data') data: CreateDriverInput) {
     return this.driverService.create(data);
   }
 
-  @Query(() => [Driver], { name: 'driver' })
+  @Query(() => [Driver], { name: 'drivers' })
   findAll() {
     return this.driverService.findAll();
   }
 
   @Query(() => Driver, { name: 'driver' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.driverService.findOne(id);
+  findOne(@Args('_id', { type: () => String }) _id: string) {
+    return this.driverService.findOne(_id);
   }
 
   @Mutation(() => Driver)
-  updateDriverDetails(
-    @Args('updateDriverInput') updateDriverInput: UpdateDriverInput,
+  updateDriver(
+    @Args('_id') _id: string,
+    @Args('data') updateDriverInput: UpdateDriverInput,
   ) {
-    return this.driverService.update(updateDriverInput.id, updateDriverInput);
-  }
-
-  @Mutation(() => Driver)
-  removeDriver(@Args('id', { type: () => Int }) id: number) {
-    return this.driverService.remove(id);
+    return this.driverService.update(_id, updateDriverInput);
   }
 }
