@@ -4,10 +4,8 @@ export type RentLog = {
   _id: string;
   driverId: string;
   vehicleId: string;
-  scheduledDate: string;
-  scheduledTime: string;
-  expectedReturnDate: string;
-  expectedReturnTime: string;
+  scheduledDateTime: string;
+  expectedReturnDateTime: string;
   hoursExceeded: number;
   daysOfRent: number;
   price: number;
