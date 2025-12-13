@@ -29,7 +29,7 @@ const rentSchema = new Schema<Rent>(
     },
     price: {
       type: Number,
-      required: true
+      required: true,
     },
     transactions: {
       type: [Object],
@@ -37,7 +37,7 @@ const rentSchema = new Schema<Rent>(
     },
     dateReserved: {
       type: Date,
-      required: true,
+      default: null,
     },
     preRentImages: {
       type: [Object],
@@ -64,12 +64,12 @@ const rentSchema = new Schema<Rent>(
       null: true,
     },
     isContractSigned: {
-      type: Boolean, 
-      default: false
+      type: Boolean,
+      default: false,
     },
     isComprehendContract: {
-      type: Boolean, 
-      default: false
+      type: Boolean,
+      default: false,
     },
   },
   {

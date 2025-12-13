@@ -1,4 +1,10 @@
-import { ObjectType, Field, Int, ID, GraphQLISODateTime } from '@nestjs/graphql';
+import {
+  ObjectType,
+  Field,
+  Int,
+  ID,
+  GraphQLISODateTime,
+} from '@nestjs/graphql';
 
 @ObjectType()
 export class Rent {
@@ -11,16 +17,16 @@ export class Rent {
   @Field(() => String)
   driverId: string;
 
-  @Field(() => GraphQLISODateTime, { nullable: false})
+  @Field(() => GraphQLISODateTime, { nullable: false })
   scheduledDateTime: Date;
 
-  @Field(() => GraphQLISODateTime ,{ nullable: false})
+  @Field(() => GraphQLISODateTime, { nullable: false })
   expectedReturnDateTime: Date;
 
-  @Field(() => Int)
+  @Field(() => Int, { defaultValue: 0 })
   hoursExceeded: number;
 
-  @Field(() => Int, { defaultValue: 0})
+  @Field(() => Int, { defaultValue: 0 })
   daysOfRent: number;
 
   @Field()
@@ -29,31 +35,31 @@ export class Rent {
   @Field(() => [TransactionLog])
   transactions: TransactionLog[];
 
-  @Field()
-  dateReserved: Date;
+  @Field(() => GraphQLISODateTime, { nullable: true })
+  dateReserved?: Date;
 
-  @Field(() => [String])
+  @Field(() => [String], { nullable: true, defaultValue: [] })
   preRentImages: string[];
 
-  @Field(() => [String])
+  @Field(() => [String], { nullable: true, defaultValue: [] })
   postRentImages: string[];
 
-  @Field(() => String)
-  damageLogs: string[];
+  @Field(() => [String], { nullable: true })
+  damageLogs?: string[];
 
-  @Field(() => Boolean)
+  @Field(() => Boolean, { defaultValue: false })
   isCancelled: boolean;
 
-  @Field(() => [String])
+  @Field(() => [String], { defaultValue: [] })
   reasonForCancel: string[];
 
   @Field(() => GraphQLISODateTime, { nullable: true })
   dateTimeCancelled: Date;
 
-  @Field(() => Boolean, { defaultValue: false})
+  @Field(() => Boolean, { defaultValue: false })
   isContractSigned: boolean;
 
-  @Field(() => Boolean, { defaultValue: false})
+  @Field(() => Boolean, { defaultValue: false })
   isComprehendContract: boolean;
 
   @Field(() => GraphQLISODateTime)

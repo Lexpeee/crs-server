@@ -17,10 +17,10 @@ export class CreateRentInput {
   @Field(() => String)
   vehicleId: string;
 
-  @Field(() => Date)
-  scheduledDateTime: string;
+  @Field(() => GraphQLISODateTime)
+  scheduledDateTime: Date;
 
-  @Field(() => Date)
+  @Field(() => GraphQLISODateTime)
   expectedReturnDateTime: Date;
 
   @Field(() => Int)
@@ -30,7 +30,7 @@ export class CreateRentInput {
   price: string;
 
   @Field(() => [CreateTransactionLogInput], { nullable: true })
-  transactions: CreateTransactionLogInput[];
+  transactions?: CreateTransactionLogInput[];
 }
 
 @InputType()
@@ -58,7 +58,7 @@ export class UpdateRentInput {
   transactions: CreateTransactionLogInput[];
 
   @Field(() => GraphQLISODateTime, { nullable: true })
-  dateReserved: Date;
+  dateReserved?: Date;
 
   @Field(() => [String], { nullable: true })
   preRentImages: string[];
