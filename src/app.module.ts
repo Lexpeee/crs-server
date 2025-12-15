@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { DriverModule } from './modules/driver/driver.module';
 import { VehicleModule } from './modules/vehicle/vehicle.module';
 import { RentModule } from './modules/rent/rent.module';
+import { RentLogsModule } from './modules/logs/rent.logs/rent.logs.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { RentModule } from './modules/rent/rent.module';
     DriverModule,
     VehicleModule,
     RentModule,
+    RentLogsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

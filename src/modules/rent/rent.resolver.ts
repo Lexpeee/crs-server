@@ -1,7 +1,7 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
-import { RentService } from './rent.service';
-import { Rent } from './entities/query';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CreateRentInput, UpdateRentInput } from './entities/mutation';
+import { Rent } from './entities/query';
+import { RentService } from './rent.service';
 
 @Resolver(() => Rent)
 export class RentResolver {
@@ -12,13 +12,13 @@ export class RentResolver {
     return this.rentService.create(createRentInput);
   }
 
-  @Query(() => [Rent], { name: 'rent' })
+  @Query(() => [Rent], { name: 'rents' })
   findAll() {
     return this.rentService.findAll();
   }
 
   @Query(() => Rent, { name: 'rent' })
-  findOne(@Args('_id', { type: () => Int }) _id: string) {
+  findOne(@Args('_id', { type: () => String }) _id: string) {
     return this.rentService.findOne(_id);
   }
 

@@ -36,6 +36,8 @@ export class CreateRentInput {
 @InputType()
 export class UpdateRentInput {
   @Field(() => ID)
+  _id: string;
+
   @Field(() => String, { nullable: true })
   driverId: string;
 
