@@ -2,11 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { CreateDriverInput, UpdateDriverInput } from './entities/mutation';
 import { MDriver } from './db/MDriver';
 import { Driver } from './entities/_types';
+import { QUERY_VERSION } from 'src/helpers/_enums';
 
 @Injectable()
 export class DriverService {
   async create(data: CreateDriverInput) {
-    const newDriver: Partial<Driver> = {
+    const newDriverData: Partial<Driver> = {
       ...data,
       numberOfVehiclesUsed: 0,
       isInHouseDriver: false,
@@ -15,18 +16,39 @@ export class DriverService {
       flags: [],
       notes: [],
     };
-    return await new MDriver(newDriver).save();
+    const newDriver = await new MDriver(newDriverData).save();
+    return {
+      data: newDriver,
+      version: QUERY_VERSION.v1,
+    };
   }
 
   async findAll(filters = {}) {
-    return await MDriver.find(filters);
+    const drivers = await MDriver.find(filters).lean();
+    return {
+      count: drivers.length,
+      data: drivers,
+      version: QUERY_VERSION.v1,
+    };
   }
 
   async findOne(driverId: string) {
-    return await MDriver.findOne({ _id: driverId }).lean();
+    const driverData = await MDriver.findOne({ _id: driverId }).lean();
+    return {
+      data: driverData,
+      version: QUERY_VERSION.v1,
+    };
   }
 
   async update(_id: string, data: UpdateDriverInput) {
-    return await MDriver.findOneAndUpdate({ _id }, { ...data }, { new: true });
+    const updatedDriverData = await MDriver.findOneAndUpdate(
+      { _id },
+      { ...data },
+      { new: true },
+    );
+    return {
+      data: updatedDriverData,
+      version: QUERY_VERSION.v1,
+    };
   }
 }

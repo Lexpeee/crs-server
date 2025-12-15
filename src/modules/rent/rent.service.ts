@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateRentInput, UpdateRentInput } from './entities/mutation';
 import { MRent } from './db/MRent';
 import { RentLogsService } from '../logs/rent.logs/rent.logs.service';
+import { QUERY_VERSION } from 'src/helpers/_enums';
 
 @Injectable()
 export class RentService {
@@ -18,18 +19,34 @@ export class RentService {
     };
     await this.rentLogsService.create(newRentLog);
 
-    return newRent;
+    return {
+      data: newRent,
+      version: QUERY_VERSION.v1,
+    };
   }
 
   async findAll() {
-    return await MRent.find();
+    const rentsData = await MRent.find().lean();
+    return {
+      count: rentsData.length,
+      data: rentsData,
+      version: QUERY_VERSION.v1,
+    };
   }
 
   async findOne(_id: string) {
-    return await MRent.findOne({ _id }).lean();
+    const rentData = await MRent.findOne({ _id }).lean();
+    return {
+      data: rentData,
+      version: QUERY_VERSION.v1,
+    };
   }
 
   async update(_id: string, data: UpdateRentInput) {
-    return await MRent.findOneAndUpdate({ _id }, { ...data });
+    const updatedRentData = await MRent.findOneAndUpdate({ _id }, { ...data });
+    return {
+      data: updatedRentData,
+      version: QUERY_VERSION.v1,
+    };
   }
 }
