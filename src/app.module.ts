@@ -15,6 +15,9 @@ import { RentLogsModule } from './modules/logs/rent.logs/rent.logs.module';
       driver: ApolloDriver,
       autoSchemaFile: true,
       sortSchema: false,
+      buildSchemaOptions: {
+        dateScalarMode: 'timestamp',
+      },
     }),
     DriverModule,
     VehicleModule,
