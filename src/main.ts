@@ -17,9 +17,9 @@ const connectToMongoDB = async () => {
 const port = process.env.PORT ?? 3000;
 
 async function bootstrap() {
-  await connectToMongoDB();
   const app = await NestFactory.create(AppModule);
-  console.log(`Server started at port: ${port}`);
   await app.listen(port);
+  await connectToMongoDB();
+  console.log(`Server started at port: ${port}`);
 }
 bootstrap();
