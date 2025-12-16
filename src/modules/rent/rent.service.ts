@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRentInput, UpdateRentInput } from './entities/mutation';
 import { MRent } from './db/MRent';
-import { RentLogsService } from '../logs/rent.logs/rent.logs.service';
+import { RentLogsService } from '../record-logs/rent.logs/rent.logs.service';
 import { QUERY_VERSION, RESPONSE_STATUS } from 'src/helpers/_enums';
 
 @Injectable()

@@ -2,7 +2,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
   RentResponseMutationData,
   RentResponseQueryData,
-  RentsResponseQueryData
+  RentsResponseQueryData,
 } from './entities';
 import { CreateRentInput, UpdateRentInput } from './entities/mutation';
 import { Rent } from './entities/query';
