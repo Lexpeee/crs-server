@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateRentInput, UpdateRentInput } from './entities/mutation';
 import { MRent } from './db/MRent';
 import { RentLogsService } from '../logs/rent.logs/rent.logs.service';
-import { QUERY_VERSION } from 'src/helpers/_enums';
+import { QUERY_VERSION, RESPONSE_STATUS } from 'src/helpers/_enums';
 
 @Injectable()
 export class RentService {
@@ -21,6 +21,7 @@ export class RentService {
 
     return {
       data: newRent,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
@@ -30,6 +31,7 @@ export class RentService {
     return {
       count: rentsData.length,
       data: rentsData,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
@@ -38,6 +40,7 @@ export class RentService {
     const rentData = await MRent.findOne({ _id }).lean();
     return {
       data: rentData,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
@@ -46,6 +49,7 @@ export class RentService {
     const updatedRentData = await MRent.findOneAndUpdate({ _id }, { ...data });
     return {
       data: updatedRentData,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
