@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateDriverInput, UpdateDriverInput } from './entities/mutation';
 import { MDriver } from './db/MDriver';
 import { Driver } from './entities/_types';
-import { QUERY_VERSION } from 'src/helpers/_enums';
+import { QUERY_VERSION, RESPONSE_STATUS } from 'src/helpers/_enums';
 
 @Injectable()
 export class DriverService {
@@ -19,6 +19,7 @@ export class DriverService {
     const newDriver = await new MDriver(newDriverData).save();
     return {
       data: newDriver,
+      status: newDriver._id ? RESPONSE_STATUS.OK : RESPONSE_STATUS.ERROR,
       version: QUERY_VERSION.v1,
     };
   }
@@ -28,6 +29,7 @@ export class DriverService {
     return {
       count: drivers.length,
       data: drivers,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
@@ -36,6 +38,7 @@ export class DriverService {
     const driverData = await MDriver.findOne({ _id: driverId }).lean();
     return {
       data: driverData,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
@@ -48,6 +51,7 @@ export class DriverService {
     );
     return {
       data: updatedDriverData,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
