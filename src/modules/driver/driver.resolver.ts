@@ -13,8 +13,8 @@ export class DriverResolver {
   constructor(private readonly driverService: DriverService) {}
 
   @Mutation(() => DriverResponseMutationData)
-  createDriver(@Args('data') data: CreateDriverInput) {
-    return this.driverService.create(data);
+  async createDriver(@Args('data') data: CreateDriverInput) {
+    return await this.driverService.create(data);
   }
 
   @Query(() => DriversResponseQueryData, { name: 'drivers' })
@@ -23,15 +23,15 @@ export class DriverResolver {
   }
 
   @Query(() => DriverResponseQueryData, { name: 'driver' })
-  findOne(@Args('_id', { type: () => String }) _id: string) {
-    return this.driverService.findOne(_id);
+  async findOne(@Args('_id', { type: () => String }) _id: string) {
+    return await this.driverService.findOne(_id);
   }
 
   @Mutation(() => DriverResponseMutationData)
-  updateDriver(
+  async updateDriver(
     @Args('_id') _id: string,
     @Args('data') updateDriverInput: UpdateDriverInput,
   ) {
-    return this.driverService.update(_id, updateDriverInput);
+    return await this.driverService.update(_id, updateDriverInput);
   }
 }
