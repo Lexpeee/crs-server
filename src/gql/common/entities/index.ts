@@ -1,4 +1,16 @@
-import { Field, InputType } from '@nestjs/graphql';
+import { Field, InputType, Int } from '@nestjs/graphql';
+
+@InputType()
+export class ResponseData {
+  @Field(() => String, { nullable: true })
+  status?: string;
+
+  @Field(() => Int)
+  count?: number;
+
+  @Field(() => String)
+  version: string;
+}
 
 /**
  * Used for dynamic objects
