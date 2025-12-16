@@ -1,31 +1,35 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
+  VehicleItemsRecordResponseMutationData,
+  VehicleItemsRecordResponseQueryData,
+  VehicleItemsRecordsResponseQueryData,
+} from './entities';
+import {
   CreateVehicleItemsInput,
   UpdateVehicleItemsInput,
 } from './entities/mutation';
-import { VehicleItemsRecord } from './entities/query';
 import { VehicleItemsService } from './vehicle-items.service';
 
 @Resolver()
 export class VehicleItemsResolver {
   constructor(private readonly vehicleItemsService: VehicleItemsService) {}
 
-  @Query(() => [VehicleItemsRecord])
+  @Query(() => VehicleItemsRecordsResponseQueryData)
   findAll() {
     return this.vehicleItemsService.findAll();
   }
 
-  @Query(() => VehicleItemsRecord)
+  @Query(() => VehicleItemsRecordResponseQueryData)
   findOne(@Args('_id', { type: () => String }) _id: string) {
     return this.vehicleItemsService.findOne(_id);
   }
 
-  @Mutation(() => VehicleItemsRecord)
+  @Mutation(() => VehicleItemsRecordResponseMutationData)
   createVehicleItem(@Args('data') data: CreateVehicleItemsInput) {
     return this.vehicleItemsService.create(data);
   }
 
-  @Mutation(() => VehicleItemsRecord)
+  @Mutation(() => VehicleItemsRecordResponseMutationData)
   updateVehicleItem(
     @Args('_id') _id: string,
     @Args('data') data: UpdateVehicleItemsInput,

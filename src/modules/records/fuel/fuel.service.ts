@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { QUERY_VERSION } from 'src/helpers/_enums';
+import { QUERY_VERSION, RESPONSE_STATUS } from 'src/helpers/_enums';
 import MFuelRecord from './db/MFuelRecord';
 import { CreateFuelInput, UpdateFuelInput } from './entities/mutation';
 
@@ -9,6 +9,7 @@ export class FuelService {
     const newFuelRecord = await new MFuelRecord(data).save();
     return {
       data: newFuelRecord,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
@@ -18,6 +19,7 @@ export class FuelService {
     return {
       count: records.length,
       data: records,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
@@ -26,6 +28,7 @@ export class FuelService {
     const records = await MFuelRecord.findOne({ _id }).lean();
     return {
       data: records,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
@@ -38,6 +41,7 @@ export class FuelService {
 
     return {
       data: updatedRecord,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
@@ -46,7 +50,7 @@ export class FuelService {
     const removedRecord = await MFuelRecord.deleteOne({ _id });
 
     return {
-      status: !!removedRecord,
+      status: removedRecord ? RESPONSE_STATUS.OK : RESPONSE_STATUS.ERROR,
       version: QUERY_VERSION.v1,
     };
   }

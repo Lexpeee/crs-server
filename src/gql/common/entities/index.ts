@@ -1,21 +1,30 @@
-import { Field, InputType, Int } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 
-@InputType()
+@ObjectType()
 export class ResponseData {
   @Field(() => String, { nullable: true })
   status?: string;
-
-  @Field(() => Int)
-  count?: number;
 
   @Field(() => String)
   version: string;
 }
 
+@ObjectType()
+export class QueryResponseData extends ResponseData {
+  @Field(() => Int, { nullable: true })
+  count?: number;
+}
+
+@ObjectType()
+export class MutationResponseData extends ResponseData {
+  @Field(() => [KeyValuePair], { nullable: true })
+  updatedFields?: Record<string, string>[];
+}
+
 /**
  * Used for dynamic objects
  */
-@InputType()
+@ObjectType()
 export class KeyValuePair {
   @Field()
   key: string;

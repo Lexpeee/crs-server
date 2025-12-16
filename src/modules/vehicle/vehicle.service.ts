@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { QUERY_VERSION } from 'src/helpers/_enums';
+import { QUERY_VERSION, RESPONSE_STATUS } from 'src/helpers/_enums';
 import { UpdateDriverInput } from '../driver/entities/mutation';
 import { MVehicle } from './db/MVehicle';
 import { CreateVehicleInput } from './entities/mutation';
@@ -14,6 +14,7 @@ export class VehicleService {
     const newVehicle = await new MVehicle(newVehicleData).save();
     return {
       data: newVehicle,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
@@ -23,6 +24,7 @@ export class VehicleService {
     return {
       count: vehicles.length,
       data: vehicles,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
@@ -31,6 +33,7 @@ export class VehicleService {
     const vehicleData = await MVehicle.findOne({ _id }).lean();
     return {
       data: vehicleData,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
@@ -43,6 +46,7 @@ export class VehicleService {
     );
     return {
       data: updatedVehicleData,
+      status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
   }
