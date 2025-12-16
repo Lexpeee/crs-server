@@ -1,7 +1,7 @@
 import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
-export class Fuel {
+export class FuelRecord {
   @Field(() => ID)
   _id: string;
 
