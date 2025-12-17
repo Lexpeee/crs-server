@@ -41,6 +41,6 @@ const FuelRecordSchema = new Schema(
   },
 );
 
-const MFuelRecord = model('fuel-records', FuelRecordSchema);
+const MFuelRecord = model('fuel-reports', FuelRecordSchema);
 
 export default MFuelRecord;

@@ -10,6 +10,7 @@ import { RentLogsModule } from './modules/audit/rent.logs/rent.logs.module';
 import { FuelModule } from './modules/reports/fuel/fuel.module';
 import { VehicleItemsModule } from './modules/reports/vehicle-items/vehicle-items.module';
 import { RepairModule } from './modules/reports/repair/repair.module';
+import { RfidModule } from './modules/reports/rfid/rfid.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { RepairModule } from './modules/reports/repair/repair.module';
     FuelModule,
     VehicleItemsModule,
     RepairModule,
+    RfidModule,
   ],
   controllers: [AppController],
   providers: [AppService],
