@@ -9,6 +9,7 @@ import { RentModule } from './modules/rent/rent.module';
 import { RentLogsModule } from './modules/audit/rent.logs/rent.logs.module';
 import { FuelModule } from './modules/reports/fuel/fuel.module';
 import { VehicleItemsModule } from './modules/reports/vehicle-items/vehicle-items.module';
+import { RepairModule } from './modules/reports/repair/repair.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { VehicleItemsModule } from './modules/reports/vehicle-items/vehicle-item
     RentLogsModule,
     FuelModule,
     VehicleItemsModule,
+    RepairModule,
   ],
   controllers: [AppController],
   providers: [AppService],
