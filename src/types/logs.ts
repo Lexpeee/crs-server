@@ -1,23 +1,8 @@
-export type DamageLog = {
-  _id: string;
-  vehicleId: string;
-  driverId: string;
-  rentLogId: string;
-  image: string[];
-  vehiclePart: string;
-  status: 'damaged' | 'totaled';
-  sense: 'visual' | 'odor' | 'feeling';
-  amountPaid: number;
-  source: 'external' | 'internal';
-  repairId?: string;
-  createdAt: Date;
-};
-
 export type RepairLog = {
   _id: string;
   driverId: string;
   vehicleId: string;
-  damageLogId: DamageLog['_id'];
+  damageLogId: string;
   notes: string[];
   amountPaid?: number;
   createdAt: Date;
