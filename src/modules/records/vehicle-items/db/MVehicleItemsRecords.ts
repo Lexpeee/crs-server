@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
+import { VehicleItemsLog } from '../entities/_types';
 
-const VehicleItemsRecordsSchema = new Schema(
+const VehicleItemsRecordsSchema = new Schema<VehicleItemsLog>(
   {
     vehicleId: {
       type: String,

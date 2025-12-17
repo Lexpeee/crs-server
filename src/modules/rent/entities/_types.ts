@@ -29,17 +29,6 @@ export type TransactionLog = {
   updatedAt?: Date;
 };
 
-export type FuelLog = {
-  _id: string;
-  driverId: string;
-  rentLogId: string;
-  lastValue: number;
-  newValue: number;
-  status: 'increased' | 'decreased';
-  amountPaid: number;
-  createdAt: Date;
-};
-
 export type DamageLog = {
   _id: string;
   vehicleId: string;
@@ -72,19 +61,6 @@ export type RFIDLog = {
   currentBalance: number;
   remainingBalance: number;
   createdAt: Date;
-};
-
-export type ItemsLog = {
-  _id: string;
-  vehicleId: string;
-  rentLogId?: string; // null if company related
-  name: string;
-  serialNumber: string;
-  type: string; // electronics, detail, accessory
-  description: string;
-  image: string[];
-  inclusions: string;
-  notes: string[];
 };
 
 export type PrintLog = {
