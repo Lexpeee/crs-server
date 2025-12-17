@@ -20,12 +20,12 @@ export class RepairResolver {
     return this.repairService.create(data);
   }
 
-  @Query(() => RepairReportsResponseQueryData, { name: 'repair' })
+  @Query(() => RepairReportsResponseQueryData)
   findAll() {
     return this.repairService.findAll();
   }
 
-  @Query(() => RepairReportResponseQueryData, { name: 'repair' })
+  @Query(() => RepairReportResponseQueryData)
   findOne(@Args('_id') _id: string) {
     return this.repairService.findOne(_id);
   }

@@ -17,12 +17,12 @@ export class FuelResolver {
     return this.fuelService.create(data);
   }
 
-  @Query(() => FuelRecordsResponseQueryData, { name: 'fuelRecords' })
+  @Query(() => FuelRecordsResponseQueryData)
   findAll() {
     return this.fuelService.findAll();
   }
 
-  @Query(() => FuelRecordResponseQueryData, { name: 'fuelRecord' })
+  @Query(() => FuelRecordResponseQueryData)
   findOne(@Args('_id', { type: () => String }) _id: string) {
     return this.fuelService.findOne(_id);
   }
