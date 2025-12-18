@@ -3,4 +3,5 @@ export type PrintLog = {
   documentId: string;
   fileUrl: string;
   createdAt: Date;
+  updatedAt?: Date;
 };

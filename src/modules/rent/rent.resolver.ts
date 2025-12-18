@@ -30,8 +30,8 @@ export class RentResolver {
   @Mutation(() => RentResponseMutationData)
   async updateRent(
     @Args('_id') _id: string,
-    @Args('updateRentInput') updateRentInput: UpdateRentInput,
+    @Args('data') data: UpdateRentInput,
   ) {
-    return await this.rentService.update(_id, updateRentInput);
+    return await this.rentService.update(_id, data);
   }
 }

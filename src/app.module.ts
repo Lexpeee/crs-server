@@ -11,6 +11,7 @@ import { FuelModule } from './modules/reports/fuel/fuel.module';
 import { VehicleItemsModule } from './modules/reports/vehicle-items/vehicle-items.module';
 import { RepairModule } from './modules/reports/repair/repair.module';
 import { RfidModule } from './modules/reports/rfid/rfid.module';
+import { PrintLogsModule } from './modules/audit/print.logs/print.logs.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { RfidModule } from './modules/reports/rfid/rfid.module';
     VehicleItemsModule,
     RepairModule,
     RfidModule,
+    PrintLogsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
