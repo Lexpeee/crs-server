@@ -7,6 +7,12 @@ export class ResponseData {
 
   @Field(() => String)
   version: string;
+
+  @Field(() => String, { nullable: true })
+  message?: string;
+
+  @Field(() => String, { nullable: true })
+  error?: string;
 }
 
 @ObjectType()
