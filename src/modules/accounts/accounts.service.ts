@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { QUERY_VERSION, RESPONSE_STATUS } from 'src/helpers/_enums';
 import MAccount from './db/MAccount';
-import { CreateAccountInput } from './entities/mutation';
+import { CreateAccountInput, LoginAccountInput } from './entities/mutation';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -38,7 +38,7 @@ export class AccountsService {
     }
   }
 
-  login(data: CreateAccountInput) {
+  login(data: LoginAccountInput) {
     const newAccount = data;
     return {
       data: newAccount,

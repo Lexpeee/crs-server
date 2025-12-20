@@ -1,6 +1,6 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { AccountsService } from './accounts.service';
-import { CreateAccountInput } from './entities/mutation';
+import { CreateAccountInput, LoginAccountInput } from './entities/mutation';
 import { AccountResponseMutationData } from './entities';
 
 @Resolver()
@@ -13,7 +13,7 @@ export class AccountsResolver {
   }
 
   @Mutation(() => AccountResponseMutationData)
-  loginAccount(@Args('data') data: CreateAccountInput) {
+  loginAccount(@Args('data') data: LoginAccountInput) {
     return this.accountsService.login(data);
   }
 }
