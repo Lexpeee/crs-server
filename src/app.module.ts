@@ -12,6 +12,7 @@ import { VehicleItemsModule } from './modules/reports/vehicle-items/vehicle-item
 import { RepairModule } from './modules/reports/repair/repair.module';
 import { RfidModule } from './modules/reports/rfid/rfid.module';
 import { PrintLogsModule } from './modules/audit/print.logs/print.logs.module';
+import { AccountsModule } from './modules/accounts/accounts.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { PrintLogsModule } from './modules/audit/print.logs/print.logs.module';
     RepairModule,
     RfidModule,
     PrintLogsModule,
+    AccountsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
