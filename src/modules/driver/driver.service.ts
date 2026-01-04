@@ -25,7 +25,7 @@ export class DriverService {
   }
 
   async findAll(filters = {}) {
-    const drivers = await MDriver.find(filters).lean();
+    const drivers = await MDriver.find(filters).populate('profile').lean();
     return {
       count: drivers.length,
       nodes: drivers,
