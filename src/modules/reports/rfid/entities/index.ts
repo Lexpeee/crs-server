@@ -8,17 +8,17 @@ import {
 @ObjectType()
 export class RFIDReportsResponseQueryData extends QueryResponseData {
   @Field(() => [RFIDReport])
-  data: RFIDReport[];
+  nodes: RFIDReport[];
 }
 
 @ObjectType()
 export class RFIDReportResponseQueryData extends QueryResponseData {
   @Field(() => RFIDReport)
-  data: RFIDReport;
+  nodes: RFIDReport;
 }
 
 @ObjectType()
 export class RFIDReportResponseMutationData extends MutationResponseData {
   @Field(() => RFIDReport)
-  data: RFIDReport;
+  nodes: RFIDReport;
 }

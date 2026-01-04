@@ -18,7 +18,7 @@ export class DriverService {
     };
     const newDriver = await new MDriver(newDriverData).save();
     return {
-      data: newDriver,
+      nodes: newDriver,
       status: newDriver._id ? RESPONSE_STATUS.OK : RESPONSE_STATUS.ERROR,
       version: QUERY_VERSION.v1,
     };
@@ -28,7 +28,7 @@ export class DriverService {
     const drivers = await MDriver.find(filters).lean();
     return {
       count: drivers.length,
-      data: drivers,
+      nodes: drivers,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -37,7 +37,7 @@ export class DriverService {
   async findOne(driverId: string) {
     const driverData = await MDriver.findOne({ _id: driverId }).lean();
     return {
-      data: driverData,
+      nodes: driverData,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -50,7 +50,7 @@ export class DriverService {
       { new: true },
     );
     return {
-      data: updatedDriverData,
+      nodes: updatedDriverData,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };

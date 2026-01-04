@@ -8,17 +8,17 @@ import {
 @ObjectType()
 export class RentAuditLogsResponseQueryData extends QueryResponseData {
   @Field(() => [RentAuditLog])
-  data: RentAuditLog[];
+  nodes: RentAuditLog[];
 }
 
 @ObjectType()
 export class RentAuditLogResponseQueryData extends QueryResponseData {
   @Field(() => RentAuditLog)
-  data: RentAuditLog;
+  nodes: RentAuditLog;
 }
 
 @ObjectType()
 export class RentAuditLogResponseMutationData extends MutationResponseData {
   @Field(() => RentAuditLog)
-  data: RentAuditLog;
+  nodes: RentAuditLog;
 }

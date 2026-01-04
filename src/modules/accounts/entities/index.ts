@@ -8,17 +8,17 @@ import {
 @ObjectType()
 export class AccountsResponseQueryData extends QueryResponseData {
   @Field(() => [Account])
-  data: Account[];
+  nodes: Account[];
 }
 
 @ObjectType()
 export class AccountResponseQueryData extends QueryResponseData {
   @Field(() => Account)
-  data: Account;
+  nodes: Account;
 }
 
 @ObjectType()
 export class AccountResponseMutationData extends MutationResponseData {
   @Field(() => Account)
-  data: Account;
+  nodes: Account;
 }

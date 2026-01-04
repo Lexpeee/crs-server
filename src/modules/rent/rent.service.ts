@@ -20,7 +20,7 @@ export class RentService {
     await this.rentLogsService.create(newRentLog);
 
     return {
-      data: newRent,
+      nodes: newRent,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -30,7 +30,7 @@ export class RentService {
     const rentsData = await MRent.find().lean();
     return {
       count: rentsData.length,
-      data: rentsData,
+      nodes: rentsData,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -39,7 +39,7 @@ export class RentService {
   async findOne(_id: string) {
     const rentData = await MRent.findOne({ _id }).lean();
     return {
-      data: rentData,
+      nodes: rentData,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -48,7 +48,7 @@ export class RentService {
   async update(_id: string, data: UpdateRentInput) {
     const updatedRentData = await MRent.findOneAndUpdate({ _id }, { ...data });
     return {
-      data: updatedRentData,
+      nodes: updatedRentData,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };

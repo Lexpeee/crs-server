@@ -11,7 +11,7 @@ export class DamageService {
   async findAll() {
     const reports = await MDamageReport.find().lean();
     return {
-      data: reports,
+      nodes: reports,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -20,7 +20,7 @@ export class DamageService {
   async findOne(_id: string) {
     const report = await MDamageReport.findOne({ _id }).lean();
     return {
-      data: report,
+      nodes: report,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -29,7 +29,7 @@ export class DamageService {
   async create(data: CreateDamageReportInput) {
     const newReport = await new MDamageReport(data).save();
     return {
-      data: newReport,
+      nodes: newReport,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -41,7 +41,7 @@ export class DamageService {
       { ...data },
     );
     return {
-      data: updatedReport,
+      nodes: updatedReport,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };

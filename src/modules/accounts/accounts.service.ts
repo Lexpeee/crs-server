@@ -13,7 +13,7 @@ export class AccountsService {
       }).lean();
       if (account) {
         return {
-          data: null,
+          nodes: null,
           status: RESPONSE_STATUS.ERROR,
           version: QUERY_VERSION.v1,
         };
@@ -25,7 +25,7 @@ export class AccountsService {
 
       const newAccount = await new MAccount(newData).save();
       return {
-        data: newAccount,
+        nodes: newAccount,
         status: RESPONSE_STATUS.OK,
         version: QUERY_VERSION.v1,
       };
@@ -41,7 +41,7 @@ export class AccountsService {
   login(data: LoginAccountInput) {
     const newAccount = data;
     return {
-      data: newAccount,
+      nodes: newAccount,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };

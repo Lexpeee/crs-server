@@ -8,17 +8,17 @@ import {
 @ObjectType()
 export class DriversResponseQueryData extends QueryResponseData {
   @Field(() => [Driver])
-  data: Driver[];
+  nodes: Driver[];
 }
 
 @ObjectType()
 export class DriverResponseQueryData extends QueryResponseData {
   @Field(() => Driver)
-  data: Driver;
+  nodes: Driver;
 }
 
 @ObjectType()
 export class DriverResponseMutationData extends MutationResponseData {
   @Field(() => Driver)
-  data: Driver;
+  nodes: Driver;
 }

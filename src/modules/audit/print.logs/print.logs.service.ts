@@ -12,7 +12,7 @@ export class PrintLogsService {
     const logs = await MPrintAuditLog.find().lean();
     return {
       count: logs.length,
-      data: logs,
+      nodes: logs,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -22,7 +22,7 @@ export class PrintLogsService {
     const log = await MPrintAuditLog.findOne({ _id });
 
     return {
-      data: log,
+      nodes: log,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -31,7 +31,7 @@ export class PrintLogsService {
   async create(data: CreatePrintAuditLogInput) {
     const newLog = await new MPrintAuditLog(data).save();
     return {
-      data: newLog,
+      nodes: newLog,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -43,7 +43,7 @@ export class PrintLogsService {
       { ...data },
     );
     return {
-      data: updatedLog,
+      nodes: updatedLog,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };

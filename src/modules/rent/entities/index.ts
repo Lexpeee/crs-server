@@ -8,17 +8,17 @@ import {
 @ObjectType()
 export class RentsResponseQueryData extends QueryResponseData {
   @Field(() => [Rent])
-  data: Rent[];
+  nodes: Rent[];
 }
 
 @ObjectType()
 export class RentResponseQueryData extends QueryResponseData {
   @Field(() => Rent)
-  data: Rent;
+  nodes: Rent;
 }
 
 @ObjectType()
 export class RentResponseMutationData extends MutationResponseData {
   @Field(() => Rent)
-  data: Rent;
+  nodes: Rent;
 }

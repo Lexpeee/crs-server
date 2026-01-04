@@ -9,7 +9,7 @@ export class RentLogsService {
   async findAll(filters: Record<string, string>[] | undefined = undefined) {
     const rentLogs = await MRentAuditLog.find(filters || {});
     return {
-      data: rentLogs,
+      nodes: rentLogs,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -18,7 +18,7 @@ export class RentLogsService {
   async findOne(_id: string) {
     const rentData = await MRentAuditLog.findOne({ _id }).lean();
     return {
-      data: rentData,
+      nodes: rentData,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -27,7 +27,7 @@ export class RentLogsService {
   async create(data: CreateRentAuditLogInput | Partial<RentAuditLog>) {
     const newRentLog = await new MRentAuditLog(data).save();
     return {
-      data: newRentLog,
+      nodes: newRentLog,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };

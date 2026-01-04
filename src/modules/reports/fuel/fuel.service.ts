@@ -8,7 +8,7 @@ export class FuelService {
   async create(data: CreateFuelInput) {
     const newFuelRecord = await new MFuelRecord(data).save();
     return {
-      data: newFuelRecord,
+      nodes: newFuelRecord,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -18,7 +18,7 @@ export class FuelService {
     const records = await MFuelRecord.find();
     return {
       count: records.length,
-      data: records,
+      nodes: records,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -27,7 +27,7 @@ export class FuelService {
   async findOne(_id: string) {
     const records = await MFuelRecord.findOne({ _id }).lean();
     return {
-      data: records,
+      nodes: records,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -40,7 +40,7 @@ export class FuelService {
     ).lean();
 
     return {
-      data: updatedRecord,
+      nodes: updatedRecord,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };

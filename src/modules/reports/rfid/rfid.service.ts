@@ -11,7 +11,7 @@ export class RfidService {
   async create(data: CreateRFIDReportInput) {
     const newRfidReport = await new MRFIDReport(data).save();
     return {
-      data: newRfidReport,
+      nodes: newRfidReport,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -20,7 +20,7 @@ export class RfidService {
   async findAll() {
     const reports = await MRFIDReport.find();
     return {
-      data: reports,
+      nodes: reports,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -29,7 +29,7 @@ export class RfidService {
   async findOne(_id: string) {
     const reportData = await MRFIDReport.findOne({ _id });
     return {
-      data: reportData,
+      nodes: reportData,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -38,7 +38,7 @@ export class RfidService {
   update(_id: string, data: UpdateRFIDReportInput) {
     const updatedReport = MRFIDReport.findOneAndUpdate({ _id }, { ...data });
     return {
-      data: updatedReport,
+      nodes: updatedReport,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };

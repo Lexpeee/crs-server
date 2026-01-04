@@ -11,7 +11,7 @@ export class RepairService {
   async create(data: CreateRepairReportInput) {
     const newReport = await new MRepairReport(data).save();
     return {
-      data: newReport,
+      nodes: newReport,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -20,7 +20,7 @@ export class RepairService {
   async findAll() {
     const reports = await MRepairReport.find().lean();
     return {
-      data: reports,
+      nodes: reports,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -29,7 +29,7 @@ export class RepairService {
   async findOne(_id: string) {
     const report = await MRepairReport.findOne({ _id }).lean();
     return {
-      data: report,
+      nodes: report,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -41,7 +41,7 @@ export class RepairService {
       { ...data },
     );
     return {
-      data: updatedReport,
+      nodes: updatedReport,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };

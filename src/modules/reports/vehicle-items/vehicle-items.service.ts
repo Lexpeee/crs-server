@@ -11,7 +11,7 @@ export class VehicleItemsService {
   async create(data: CreateVehicleItemsInput) {
     const newVehicleItem = await new MVehicleItemsRecords(data).save();
     return {
-      data: newVehicleItem,
+      nodes: newVehicleItem,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -21,7 +21,7 @@ export class VehicleItemsService {
     const vehicleItems = await MVehicleItemsRecords.find().lean();
     return {
       count: vehicleItems.length,
-      data: vehicleItems,
+      nodes: vehicleItems,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -30,7 +30,7 @@ export class VehicleItemsService {
   async findOne(_id: string) {
     const vehicleItems = await MVehicleItemsRecords.findOne({ _id }).lean();
     return {
-      data: vehicleItems,
+      nodes: vehicleItems,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -42,7 +42,7 @@ export class VehicleItemsService {
       data,
     ).lean();
     return {
-      data: vehicleItems,
+      nodes: vehicleItems,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };

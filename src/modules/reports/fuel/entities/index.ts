@@ -8,17 +8,17 @@ import { FuelRecord } from './query';
 @ObjectType()
 export class FuelRecordsResponseQueryData extends QueryResponseData {
   @Field(() => [FuelRecord])
-  data: FuelRecord[];
+  nodes: FuelRecord[];
 }
 
 @ObjectType()
 export class FuelRecordResponseQueryData extends QueryResponseData {
   @Field(() => FuelRecord)
-  data: FuelRecord;
+  nodes: FuelRecord;
 }
 
 @ObjectType()
 export class FuelRecordResponseMutationData extends MutationResponseData {
   @Field(() => FuelRecord, { nullable: true })
-  data?: FuelRecord;
+  nodes?: FuelRecord;
 }

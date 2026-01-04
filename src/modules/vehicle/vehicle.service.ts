@@ -13,7 +13,7 @@ export class VehicleService {
     };
     const newVehicle = await new MVehicle(newVehicleData).save();
     return {
-      data: newVehicle,
+      nodes: newVehicle,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -23,7 +23,7 @@ export class VehicleService {
     const vehicles = await MVehicle.find().lean();
     return {
       count: vehicles.length,
-      data: vehicles,
+      nodes: vehicles,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -32,7 +32,7 @@ export class VehicleService {
   async find(_id: string) {
     const vehicleData = await MVehicle.findOne({ _id }).lean();
     return {
-      data: vehicleData,
+      nodes: vehicleData,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };
@@ -45,7 +45,7 @@ export class VehicleService {
       { new: true },
     );
     return {
-      data: updatedVehicleData,
+      nodes: updatedVehicleData,
       status: RESPONSE_STATUS.OK,
       version: QUERY_VERSION.v1,
     };

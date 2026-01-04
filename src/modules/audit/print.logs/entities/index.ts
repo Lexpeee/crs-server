@@ -8,17 +8,17 @@ import {
 @ObjectType()
 export class PrintAuditLogsResponseQueryData extends QueryResponseData {
   @Field(() => [PrintAuditLog])
-  data: PrintAuditLog[];
+  nodes: PrintAuditLog[];
 }
 
 @ObjectType()
 export class PrintAuditLogResponseQueryData extends QueryResponseData {
   @Field(() => PrintAuditLog)
-  data: PrintAuditLog;
+  nodes: PrintAuditLog;
 }
 
 @ObjectType()
 export class PrintAuditLogResponseMutationData extends MutationResponseData {
   @Field(() => PrintAuditLog)
-  data: PrintAuditLog;
+  nodes: PrintAuditLog;
 }

@@ -8,17 +8,17 @@ import {
 @ObjectType()
 export class RepairReportsResponseQueryData extends QueryResponseData {
   @Field(() => [RepairReport])
-  data: RepairReport[];
+  nodes: RepairReport[];
 }
 
 @ObjectType()
 export class RepairReportResponseQueryData extends QueryResponseData {
   @Field(() => RepairReport)
-  data: RepairReport;
+  nodes: RepairReport;
 }
 
 @ObjectType()
 export class RepairReportResponseMutationData extends MutationResponseData {
   @Field(() => RepairReport)
-  data: RepairReport;
+  nodes: RepairReport;
 }
